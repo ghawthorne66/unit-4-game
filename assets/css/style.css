@@ -2,3 +2,25 @@ body {
    background-image: url(../images/cool-background.png);
     background-color: blue;
    }
+/*.card-title {
+  font-family: serif;
+  color: #59AAA5;
+  font-weight: bold;
+}*/
+
+/*.media-object {
+  width: 100%;
+}*/
+
+.media {
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+}
+/*.navbar-expand .navbar-nav .nav-link{
+  cursor: pointer !important;
+}*/
+
+.crystal-image {
+  width: 20%;
+  padding: 5px;
+}
