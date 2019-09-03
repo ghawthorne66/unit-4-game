@@ -8,9 +8,37 @@ body {
   font-weight: bold;
 }*/
 
-/*.media-object {
+h1 {
+    margin: 50px 0 0 50px;
+    height: 120px;
+    width: 120px;
+    padding: 10px
+    /*background-image: url("http://javascriptbook.com/code/c01/images/constructive-logo.gif")*/;
+    background-repeat: no-repeat;
+    background-color: blue !important
+    text-indent: -9999px;
+    border-top: 1px solid #bcbdc0;
+    border-left: 1px solid #bcbdc0;
+    border-right: 1px solid #bcbdc0;}
+
+  section {
+    margin: 50px 0 0 50px;
+    height: 120px;
+    width: 120px;
+    padding: 10px
+    /*background-image: url("http://javascriptbook.com/code/c01/images/constructive-logo.gif")*/;
+    background-repeat: no-repeat;
+    background-color: blue !important
+    text-indent: -9999px;
+    border-top: 1px solid #bcbdc0;
+    border-left: 1px solid #bcbdc0;
+    border-right: 1px solid #bcbdc0;}
+
+  }
+
+.media-object {
   width: 100%;
-}*/
+}
 
 .media {
   border-top: 2px solid #ccc;
@@ -24,3 +52,4 @@ body {
   width: 20%;
   padding: 5px;
 }
+

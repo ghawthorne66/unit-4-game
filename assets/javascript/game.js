@@ -2,38 +2,96 @@
 // create variables and onkeypress
 var wins  = 0
 var losses = 0
-var guessesLeft = 9
-var guesses = []
-// var letters = ("a", "b", "c", "d")
-var letters = ("abcdefghijklmnopqrstuvwxyz").split("");
-var currentRandomPick = "";
-var currentEnteredLetter = "";
+var currentGoal = 0;
+var currentScore = 0;
+var crystalValues = [0,0,0,0];
 
-document.onkeypress = function(evt) {
-    evt = evt || window.event;
-    var charCode = evt.keyCode || evt.which;
-    var charStr = String.fromCharCode(charCode);
-    currentEnteredLetter = charStr.toLowerCase();
-    console.log("You entered: " + currentEnteredLetter);
-    handleGuess(currentEnteredLetter); 
-};
+
 //Game starts and computer chooses random letter
-
-function startGame() {
+function startGame(reset) {
     console.log("Starting game...");
-    currentRandomPick = randomLetter();
-    console.log("Random letter picked is: " + currentRandomPick);
+    currentGoal = randomGoal();
+    setCrystalValues();
+    if(reset){
+        clearImages();
+    }
+    createCrystalElements();
+    console.log("Random goal: " + currentGoal);
     setHTMLWinCount();
     setHTMLLosses();
-    setHTMLGuessesLeft();
-    setHTMLGuessesSoFar();
+    setHTMLGoal();
+    setHTMLScore();
 }
 
 // compares letters and determine a win (print) or continue (games left)
-function randomLetter(){
-    var random = Math.floor(Math.random() * letters.length); // 0-6 e.g. 5
-    var  letter = letters[random];
-    return letter; 
+function randomGoal(){
+    var random = Math.floor(Math.random() * 100); // 0-6 e.g. 5
+    return random; 
+}
+
+function clearImages(){
+    console.log("Clearing images...");
+    $("#crystal_images").empty();
+}
+
+
+function createCrystalElements(){
+
+    for (var i = 0; i < crystalValues.length; i++) {
+
+        // For each iteration, we will create an imageCrystal
+        var imageCrystal = $("<img>");
+    
+        // First each crystal will be given the class ".crystal-image".
+        // This will allow the CSS to take effect.
+        imageCrystal.addClass("crystal-image");
+    
+        // Each imageCrystal will be given a src link to the crystal image
+        imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+    
+        // Each imageCrystal will be given a data attribute called data-crystalValue.
+        // This data attribute will be set equal to the array value.
+        imageCrystal.attr("data-crystalvalue", crystalValues[i]);
+    
+        // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+        $("#crystal_images").append(imageCrystal);
+      }
+    
+      // This time, our click event applies to every single crystal on the page. Not just one.
+      $(".crystal-image").on("click", function() {
+    
+        // Determining the crystal's value requires us to extract the value from the data attribute.
+        // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+        // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+        // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+    
+        var crystalValue = ($(this).attr("data-crystalvalue"));
+        crystalValue = parseInt(crystalValue);
+        // We then add the crystalValue to the user's "counter" which is a global variable.
+        // Every click, from every crystal adds to the global counter.
+        currentScore += crystalValue;
+        $('#score').text(" " + currentScore);
+    
+        // All of the same game win-lose logic applies. So the rest remains unchanged.
+        console.log("Crystal value: " + crystalValue);
+        console.log("current score: " + currentScore);
+        console.log("current Goal: " + currentGoal);
+        console.log("Crystal Value: " + crystalValues);
+        console.log(" ");
+        console.log(" ");
+        console.log(" ");
+
+        wonOrLost();
+      });
+
+}
+
+
+function setCrystalValues(){
+    for (var i = 0; i < crystalValues.length; i++){
+        var random = Math.floor(Math.random() * currentGoal);
+        crystalValues[i] = random;
+    }
 }
 
 function setHTMLWinCount(){
@@ -47,76 +105,40 @@ function setHTMLLosses(){
     loss_element.innerHTML= "  " + losses;
 }
 
-// after 9 (to 0) choices computer creates a loss and starts at 9 again
-function setHTMLGuessesLeft(){
-    var left_element = document.getElementById("guesses");
-    left_element.innerHTML= "  " + guessesLeft;
-}
-// Display Results "Your guesses so far"
-function setHTMLGuessesSoFar(){
-    var guesses_element = document.getElementById("guessessofar");
-    guesses_element.innerHTML= "  " + guesses;
+function setHTMLGoal(){
+    var goal_element = document.getElementById("goal");
+    goal_element.innerHTML= "  " + currentGoal;
 }
 
-function handleGuess () {
-    if (currentEnteredLetter === currentRandomPick){
+function setHTMLScore(){
+    var score_element = document.getElementById("score");
+    score_element.innerHTML= "  " + currentScore;
+}
+
+
+function wonOrLost(){
+    if(currentScore === currentGoal){
         handleWin();
-    }
-    else {
-        incorrect();
-    }
-}
-
-
-// if incorrect display the current entered letter and set guesses left and guesses so far
-function incorrect(){
-    guessesLeft--;
-    guesses.push(currentEnteredLetter);
-    setHTMLGuessesLeft();
-    setHTMLGuessesSoFar();
-    didTheyLoose();
-}
-
-function handleWin(){
-    wins++;
-    reset();
-    setHTMLWinCount(wins);
-    setHTMLGuessesLeft();
-    setHTMLGuessesSoFar();
-}
-
-function handleLoss(){
-    losses--;
-    reset();
-    setHTMLGuessesLeft();
-    setHTMLGuessesSoFar();
-    setHTMLLosses();
-}
-
-function didTheyLoose(){
-    if (guessesLeft === 0){
+    }else if (currentScore > currentGoal){
         handleLoss();
     }
 }
 
-function reset (){
-    guessesLeft=9;
-    guesses = [];
-    currentRandomPick = randomLetter();
-    console.log("New pick is: " + currentRandomPick);
+function handleWin(){
+    console.log("You Won!");
+    wins++;
+    currentScore =0;
+    startGame(true);
+}
+
+function handleLoss(){
+    console.log("You lost!");
+    losses++;
+    currentScore =0;
+    startGame(true);
 }
 
 
 
-//user makes a choice
-//computer creates random letter 
-// compares letters and determine a win (print) or continue (games left)
-// Display Results "Your guesses so far"
-// Display Results "Guesses Left"
-// Display Results "wins"
-
-//computer creates 9 choices
-// after 9 (to 0) choices computer creates a loss and starts at 9 again
-// Display Results "losses"
-
-// var letters = ("a", "b", "c", "d")
+// Start the game
+startGame(false);
