@@ -1,6 +1,6 @@
 body {
    background-image: url(../images/cool-background.png);
-    background-color: blue;
+    background-color: white
    }
 /*.card-title {
   font-family: serif;
@@ -9,17 +9,20 @@ body {
 }*/
 
 h1 {
-    margin: 50px 0 0 50px;
-    height: 120px;
-    width: 120px;
-    padding: 10px
+    /* margin: 50px 0 0 50px; */
+    /* height: 120px; */
+    width: 200px;
+    padding: 10px;
     /*background-image: url("http://javascriptbook.com/code/c01/images/constructive-logo.gif")*/;
-    background-repeat: no-repeat;
-    background-color: blue !important
-    text-indent: -9999px;
+    /* background-repeat: no-repeat; */
+    background-color: blue !important;
+    text-decoration-color: aliceblue
+    /* text-indent: -9999px; */
     border-top: 1px solid #bcbdc0;
     border-left: 1px solid #bcbdc0;
-    border-right: 1px solid #bcbdc0;}
+    border-right: 1px solid #bcbdc0;
+    border-bottom: 1px solid #bcbdc0;
+  }
 
   section {
     margin: 50px 0 0 50px;
@@ -30,9 +33,15 @@ h1 {
     background-repeat: no-repeat;
     background-color: blue !important
     text-indent: -9999px;
-    border-top: 1px solid #bcbdc0;
+    /* border-top: 1px solid #bcbdc0;
     border-left: 1px solid #bcbdc0;
-    border-right: 1px solid #bcbdc0;}
+    border-right: 1px solid #bcbdc0;} */
+
+  }
+
+  div p { 
+    background-color: yellow;
+    width: 20pc;
 
   }
 
