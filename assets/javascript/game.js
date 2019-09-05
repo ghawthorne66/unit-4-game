@@ -5,6 +5,7 @@ var losses = 0
 var currentGoal = 0;
 var currentScore = 0;
 var crystalValues = [0,0,0,0];
+var image_names = ["ace_of_clubs.jpg","ace_of_hearts.jpg","ace_of_clubs.jpg","ace_of_diamond.jpg"]
 
 
 //Game starts and computer chooses random letter
@@ -48,7 +49,7 @@ function createCrystalElements(){
     
         // Each imageCrystal will be given a src link to the crystal image
         // imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
-        imageCrystal.attr("src", "assets/images/ace_of_spades.png");
+        imageCrystal.attr("src", "assets/images/" + image_names[i]);
     
         // Each imageCrystal will be given a data attribute called data-crystalValue.
         // This data attribute will be set equal to the array value.

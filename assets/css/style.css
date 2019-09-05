@@ -1,6 +1,12 @@
 body {
-   background-image: url(../images/cool-background.png);
-    background-color: white
+   /* background-image: url(../images/cool-background.png); */
+   /* background-image: url(../images/blackjack.jpg); */
+   /* background-repeat: no-repeat; */
+   float: left;
+   background-size: 90%;
+   background-image: url(../images/blackjack-layout-1-gray.png);
+    background-color: white;
+    background-repeat: no-repeat;
    }
 /*.card-title {
   font-family: serif;
@@ -8,30 +14,34 @@ body {
   font-weight: bold;
 }*/
 
-h1 {
+.title {
     /* margin: 50px 0 0 50px; */
     /* height: 120px; */
-    width: 200px;
+    float: left,
+    margin: 10px;
+    width: 400px;
     padding: 10px;
+    text-align: center
     /*background-image: url("http://javascriptbook.com/code/c01/images/constructive-logo.gif")*/;
     /* background-repeat: no-repeat; */
-    background-color: blue !important;
+    background-color: red;
     text-decoration-color: aliceblue
     /* text-indent: -9999px; */
     border-top: 1px solid #bcbdc0;
     border-left: 1px solid #bcbdc0;
     border-right: 1px solid #bcbdc0;
     border-bottom: 1px solid #bcbdc0;
+    font-size: 25px;
   }
 
   section {
     margin: 50px 0 0 50px;
     height: 120px;
-    width: 120px;
+    width: 200px;
     padding: 10px
     /*background-image: url("http://javascriptbook.com/code/c01/images/constructive-logo.gif")*/;
     background-repeat: no-repeat;
-    background-color: blue !important
+    background-color: blue;
     text-indent: -9999px;
     /* border-top: 1px solid #bcbdc0;
     border-left: 1px solid #bcbdc0;
@@ -39,16 +49,112 @@ h1 {
 
   }
 
-  div p { 
-    background-color: yellow;
-    width: 20pc;
+  /* img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+  } */
+  
+.row {
 
+  height: 100px;
+}
+  div p { 
+    /* background-color: yellow;
+    width: 100px;
+    height: 40px; */
+
+  }
+
+
+  .paragraph {
+
+    width: 420px;
+    background: whiite;
+    padding: 5px;
+    text-align: justify;
+    text-emphasis-color: white;
+    text-emphasis: bold;
+    text-decoration: aliceblue; 
+    color: black;
+    padding-bottom: 70px;
+    padding-top: 10px;
+    /* background-image: url(../images/cards.webp); */
+    background-image: url(../images/kisspng-queen-of-hearts-playing-card-clip-art-people-playing-cards-5abb16db89d683.3700299715222105235646.jpg);
+    background-repeat: no-repeat;
+    background-position: 35%;
+    /* background-size: 100%; */
+    /* background-blend-mode: exclusion; */
+    /* filter: opacity(30) */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+
+    /* background-color: white; */
+
+  }
+  .goal_wins_losses {
+    overflow: auto;
+  }
+
+  .goal{
+    float: left;
+    color: whitesmoke;
+    background-color: black;
+    height: 100px;
+    width: 150px;
+    padding: 2%;
+    font-style: normal;
+    font-size: 50px;
+    margin: 5px;
+  }
+
+  .wins_losses{
+    float: left;
+    width: 200px;
+    height: 100px;
+    background-color: lightcoral;
+    margin: 5px;
+    padding: 5px;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .instruction_p {
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
 .media-object {
   width: 100%;
 }
 
+.total_score {
+
+  /* float: left; */
+  width: 200px;
+  height: 50px;
+  background-color: lightcoral;
+  margin: 5px;
+  padding: 5px;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+#score {
+
+  width: 200px;
+  height: 50px;
+  background-color: black;
+  color: whitesmoke;
+  margin: 5px;
+  padding: 5px;
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+}
 .media {
   border-top: 2px solid #ccc;
   padding-top: 20px;
@@ -57,8 +163,11 @@ h1 {
   cursor: pointer !important;
 }*/
 
-.crystal-image {
-  width: 20%;
+#crystal-image {
+  height: 180px;
+  width: 80px;
   padding: 5px;
+  border-color: black;
+  border-block-color: black;
 }
 
